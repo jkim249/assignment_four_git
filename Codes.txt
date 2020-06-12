@@ -1,0 +1,37 @@
+Missing Data
+
+dog_raw_data1.select("Primary_Breed_Code").distinct().orderBy("Primary_Breed_Code").show(n=999999, truncate=True)
+dog_raw_data1.select("Secondary_Breed_Code").distinct().orderBy("Secondary_Breed_Code").show(n=999999, truncate=True)
+dog_raw_data1.select("Primary_Colour_Code").distinct().orderBy("Primary_Colour_Code").show(n=999999, truncate=True)
+dog_raw_data1.select("Secondary_Colour_Code").distinct().orderBy("Secondary_Colour_Code").show(n=999999, truncate=True)
+dog_raw_data1.select("Date_Of_Death").distinct().orderBy("Date_Of_Death").show(n=999999, truncate=True)
+dog_raw_data1.select("Date_Of_Departure").distinct().orderBy("Date_Of_Departure").show(n=999999, truncate=True)
+dog_raw_data1.select("Age").distinct().orderBy("Age").show(n=999999, truncate=True)
+dog_raw_data1.select("Animal_Sex").distinct().orderBy("Animal_Sex").show(n=999999, truncate=True)
+dog_raw_data1.select("Desexed").distinct().orderBy("Desexed").show(n=999999, truncate=True)
+dog_raw_data1.select("Worker").distinct().orderBy("Worker").show(n=999999, truncate=True)
+dog_raw_data1.select("Classification").distinct().orderBy("Classification").show(n=999999, truncate=True)
+dog_raw_data1.select("Classification_Date").distinct().orderBy("Classification_Date").show(n=999999, truncate=True)
+dog_raw_data1.select("Classified_Date_Age").distinct().orderBy("Classified_Date_Age").show(n=999999, truncate=True)
+
+
+dog_raw_data2.select("Dog_Number").distinct().orderBy("Dog_Number").show(n=999999, truncate=True)
+dog_raw_data2.select("Microchip_Flag").distinct().orderBy("Microchip_Flag").show(n=999999, truncate=True)
+dog_raw_data2.select("Microchip_Brand").distinct().orderBy("Microchip_Brand").show(n=999999, truncate=True)
+dog_raw_data2.select("Offence_Free_Flag").distinct().orderBy("Offence_Free_Flag").show(n=999999, truncate=True)
+dog_raw_data2.select("Active_Dog_Record").distinct().orderBy("Active_Dog_Record").show(n=999999, truncate=True)
+
+dog_raw_data3.select("Dog_Number").distinct().orderBy("Dog_Number").show(n=999999, truncate=True)
+dog_raw_data3.select("Total_Complains").distinct().orderBy("Total_Complains").show(n=999999, truncate=True)
+dog_raw_data3.select("hash_binary").distinct().orderBy("hash_binary").show(n=999999, truncate=True)
+
+Change format
+
+from pyspark.sql.types import DateType, IntegerType
+
+dog_raw_data1 = dog_raw_data1.withColumn("Dog_Number", dog_raw_data1["Dog_Number"].cast(IntegerType()))
+dog_raw_data1 = dog_raw_data1.withColumn("Age", dog_raw_data1["Age"].cast(IntegerType()))
+dog_raw_data1 = dog_raw_data1.withColumn("Date_Of_Birth", dog_raw_data1["Date_Of_Birth"].cast(DateType()))
+dog_raw_data1 = dog_raw_data1.withColumn("Date_Of_Death", dog_raw_data1["Date_Of_Birth"].cast(DateType()))
+dog_raw_data1 = dog_raw_data1.withColumn("Date_Of_Departure", dog_raw_data1["Date_Of_Birth"].cast(DateType()))
+dog_raw_data1 = dog_raw_data1.withColumn("Classification_Date", dog_raw_data1["Date_Of_Birth"].cast(DateType()))
